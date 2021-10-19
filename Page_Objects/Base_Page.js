@@ -2,10 +2,14 @@ let webdriver = require('selenium-webdriver');
 let driver = new webdriver.Builder().forBrowser('chrome').build();
 driver.manage().setTimeouts({implicit: (10000)});
 
-class Base_Page{
+class BasePage{
     constructor(){
         global.driver = driver; //Allow us to share driver across page classes 
     } 
+
+    go_to_url(url){
+        driver.get(url);
+    }
 }
 
-module.exports = Base_Page;
+module.exports = BasePage;
