@@ -3,14 +3,17 @@ let BasePage = require('../Page_Objects/Base_Page');
 let webdriver = require('selenium-webdriver');
 
 class LoginPage extends BasePage {
-    login_to_account(login, pass) { //This is a method of the class
-        driver.findElement(By.xpath('//input[@id="email"]')).sendKeys(login);
-        driver.findElement(By.xpath('//input[@id="passwd"]')).sendKeys(pass, Key.ENTER);
+    async login_to_account(login, pass) { //This is a method of the class
+        await driver.findElement(By.xpath('//input[@id="email"]')).sendKeys(login);
+        await driver.findElement(By.xpath('//input[@id="passwd"]')).sendKeys(pass, Key.ENTER);
     };
 
-    is_login() {
-        if (driver.getTitle() === 'Login - My Store') return false;
-        else return true;
+    async is_login() {
+        let url = 'http://automationpractice.com/index.php?controller=my-account';
+        if(await driver.getCurrentUrl() === url){
+            return true;
+        }else return false;
+        
     };
 }
 

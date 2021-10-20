@@ -9,9 +9,10 @@ describe('Login to account negative', function(){
     afterEach(function() {
         driver.quit();
     });
-    it('Login Test Negative', function(){
+    it('Login Test Negative', async function(){
         let base_url = 'http://automationpractice.com/index.php?controller=authentication&back=my-account';
-        Login_Page.go_to_url(base_url);
-        Login_Page.login_to_account('wrongemail@wrong.com', 'WrongPass');
+        await Login_Page.go_to_url(base_url);
+        await Login_Page.login_to_account('wrongemail@wrong.com', 'WrongPass');
+        assert.equal(false, await Login_Page.is_login())
     });
 })
