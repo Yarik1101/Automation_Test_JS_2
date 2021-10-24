@@ -8,7 +8,7 @@ class BasePage{
     } 
 
     async go_to_url(url){
-        driver.get(url);
+        await driver.get(url);
     }
 }
 

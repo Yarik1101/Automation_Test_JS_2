@@ -9,11 +9,9 @@ class LoginPage extends BasePage {
     };
 
     async is_login() {
-        let url = 'http://automationpractice.com/index.php?controller=my-account';
-        if(await driver.getCurrentUrl() === url){
-            return true;
-        }else return false;
-        
+        let correct_url = 'http://automationpractice.com/index.php?controller=my-account';
+        if (await driver.getCurrentUrl() === correct_url) return true;
+        else return false;
     };
 }
 
